@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>APIchuck</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+
+    <script>
+        function getChuckNorrisJoke() {
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://api.chucknorris.io/jokes/random", true);
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              var response = JSON.parse(xhr.responseText);
+              document.getElementById("joke").innerHTML = response.value;
+            } else {
+              document.getElementById("joke").innerHTML = "Impossibile ottenere la battuta di Chuck Norris al momento.";
+            }
+          };
+          xhr.send();
+        }
+      </script>
+</head>
+<body>
+    <div class="riquadro">
+        <header>
+          <center> Chuck Norris Battute</center>
+        </header>
+      </div>
+      
+    <button onclick="getChuckNorrisJoke()">Generami una battuta</button>
+    <p id="joke"></p>
+
+    <img id="cat" src="immagini/img2.jpg" alt="Image"/>
+    
+
+</body>
+</html>
